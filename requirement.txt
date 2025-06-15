@@ -7,9 +7,11 @@ django-js-asset==3.1.2
 fonttools==4.57.0
 gitdb==4.0.12
 GitPython==3.1.44
+idna==3.10
 jsonschema==4.23.0
 jsonschema-specifications==2025.4.1
 opencv-python==4.11.0.86
+packaging==24.2
 pillow==11.2.1
 psycopg2-binary==2.9.10
 python-dateutil==2.9.0.post0
