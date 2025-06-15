@@ -1,7 +1,7 @@
 asgiref==3.8.1
 cachetools==5.5.2
 charset-normalizer==3.4.2
-Django
+django
 django-ckeditor==6.7.2
 django-js-asset
 fonttools==4.57.0
