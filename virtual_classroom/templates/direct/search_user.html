@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="center-align">
+    <h4>Search users</h4>
+    <span>Find users that you can messsage</span>
+    <form class="col s12">
+
+        <div class="input-field col s12">
+          <select name="course_select">
+            <option value="" disabled selected>Choose your option</option>
+            {% for course in courses %}
+              <option value="{{ course.id }}">{{ course.title }}</option>
+            {% endfor %}
+          </select>
+          <label>Select from course</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input name="q" value="{{ request.GET.q }}" id="search" type="text" class="validate">
+            <label for="last_name">Search</label>
+          </div>
+          <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color: rgb(43, 187, 173);">Search
+            <i class="material-icons right">send</i>
+          </button>
+    </form>
+</div>
+
+<div class="row">
+{% for person in users %}
+    <div class="col s12 m4">
+      <div class="profile-container">
+        <div class="header">
+          {% if person.picture %}
+            <img src="{{ person.picture.url }}" class="profile-pic">
+          {% else %}
+            <img src="{% static 'img/no_avatar.jpg' %}" class="profile-pic">
+          {% endif %}
+        </div>
+        <div class="profile-info">
+          <h5>{{ person.get_full_name }}</h5>
+          <div class="info-label">Username</div>
+          <div class="info-value">@{{ person.username }}</div>
+          <div class="info-label">Mail</div>
+          <div class="info-value">{{ person.email }}</div>
+          <a href="{% url 'new-conversation' person.username %}" class="waves-effect waves-light btn" style="background-color: rgb(43, 187, 173);"><i class="material-icons right">send</i>Send a message!</a>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
