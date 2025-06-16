@@ -1,2 +1,6 @@
 pip install -r requirement.txt
-python3.9 manage.py collectstatic
+python manage.py migrate --noinput
+python manage.py collectstatic --noinput --clear
+gunicorn virtual_classroom.wsgi:application --bind 0.0.0.0:$PORT
+
+chmod +x build_files.sh
